@@ -18,50 +18,52 @@ function preload(){
 //Bodies
 var box1;
 
-//Sprites & Assets
+//Sprites
 var wll, bg, sl;
+
+//Assets & Constructor functions
 var seaLion;
 var img = [];
 
 
 function setup() {
-  
+
   createCanvas(1920 , 1080);
   seaLion = new SeaLion();
   seaLion.display();
-  
+
   //Create world and engine
   engine = Engine.create();
   world = engine.world;
-  
+
   //Add bodies here
   box1 = Bodies.rectangle(200, 200, 100, 100);
-  
+
   // run the engine
   Engine.run(engine);
-  
+
   // add all of the bodies to the world
   World.add(engine.world, box1);
-  
-} 
+
+}
 
 function draw() {
   //BACKGROUND
   background(250);
-  
+
   //ASSETS
   backdrop();
   wall();
-  
-  //CHARACTERS
-  seaLion.display();
-  
+
+  //INTERACTION
+  seaLion.movement();
+
   //DEBUGGING
   wll.debug = mouseIsPressed;
   bg.debug = mouseIsPressed;
   sl.display.debug = mouseIsPressed;
-  
-  
+
+
   //DRAW ALL SPRITES
   drawSprites();
   console.log(box1);
@@ -86,12 +88,15 @@ function wall(){
 
   function SeaLion() {
     var x = 200;
-    var y = y;
-    
-    this.display = function(y){
-      sl = createSprite(x, y);
+    var y = 500;
+
+    this.display = function(){
+      sl = createSprite(box1.position.x, box1.position.y);
       sl.shapeColor = color(0);
       sl.addImage('SL_CONT', img[2]);
-      sl.draw(x, y);
-  }
-} 
+    }
+
+    this.movement = function(){
+      //sl.draw = function() { translate(box1.position.x, box1.position.y) }
+    }
+}
