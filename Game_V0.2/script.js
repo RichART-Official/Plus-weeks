@@ -2,49 +2,56 @@
 var Engine = Matter.Engine,
     //Render = Matter.Render,
     World = Matter.World,
-    Bodies = Matter.Bodies;
+    Bodies = Matter.Bodies,
+    Vector = Matter.Vector;
 
-//Elements
-var engine;
-var world;
+// create an engine
+var engine = Engine.create();
+
+//Constructor function aliases
+var TheGround, TheWall, TheSeaLion, TheLion, TheBullet;
+var TheLions = [];
+
+//Physics-Bodies
+var ground, seaLion, wall, lion, bullet;
+
+//Physics-Vectors
+//var vSeaLion;
+//Sprites
+var wll, bg, sl, li;
+
+//Assets
+var img = [];
 
 function preload(){
   img[0] = loadImage("img/bg.jpg");
   img[1] = loadImage("img/wll.jpeg");
   img[2] = loadImage("img/Sea_Lion/SL0001.png");
+  img[3] = loadImage("img/Lion/L0001.png");
 }
-
-
-//Bodies
-var box1;
-
-//Sprites
-var wll, bg, sl;
-
-//Assets & Constructor functions
-var seaLion;
-var img = [];
-
 
 function setup() {
 
   createCanvas(1920 , 1080);
-  seaLion = new SeaLion();
-  seaLion.display();
+
+  //Declare constructor functions
+  TheGround = new Ground();
+  TheSeaLion = new SeaLion();
+  TheLion = new Lion();
+
+  for(i = 0; i <=10; i++){
+    var Random = 640;
+    Random =+ 100;
+    TheLions.push( new Lion(Random, 0, 0, 0));
+  }
+  //TheBullet = new Bullet();
+  TheWall = new Wall();
 
   //Create world and engine
-  engine = Engine.create();
-  world = engine.world;
-
-  //Add bodies here
-  box1 = Bodies.rectangle(200, 200, 100, 100);
-
+  // Add all of the bodies to the world
+  //Vector.add(vSeaLion);
   // run the engine
   Engine.run(engine);
-
-  // add all of the bodies to the world
-  World.add(engine.world, box1);
-
 }
 
 function draw() {
@@ -52,51 +59,47 @@ function draw() {
   background(250);
 
   //ASSETS
-  backdrop();
-  wall();
+  TheGround.display();
+  TheWall.display();
+  TheSeaLion.display();
+  for (i=0; i <= TheLions.length; i++){
+    TheLion.display();
+  }
+  //backdrop();
+  //wall();
 
   //INTERACTION
-  seaLion.movement();
 
-  //DEBUGGING
-  wll.debug = mouseIsPressed;
-  bg.debug = mouseIsPressed;
-  sl.display.debug = mouseIsPressed;
+  // //DEBUGGING
+  // The.debug = mouseIsPressed;
+  // bg.debug = mouseIsPressed;
 
 
   //DRAW ALL SPRITES
   drawSprites();
-  console.log(box1);
-  rect(box1.position.x, box1.position.y, 80,80);
-  sl.display(box1.position.y);
 }
 
-function backdrop(){
-  var x = width /2;
-  var y = height /2;
-  bg = createSprite(x,y);
-  bg.shapeColor = color(0);
-  bg.addImage('BG_CONT', img[0]);
-}
 
-function wall(){
-  var wllHeight = (height / 3.5)*2;
-  var wllWidth = 200;
-  wll = createSprite(width/3 , height - (wllHeight/2), 30 , wllHeight)
-  wll.addImage('WLL_CONT', img[1]);
-}
 
-  function SeaLion() {
-    var x = 200;
-    var y = 500;
+// function wall(){
+//   var wllHeight = (height / 3.5)*2;
+//   var wllWidth = 200;
+//   wll = createSprite(width/3 , height - (wllHeight/2), 30 , wllHeight)
+//   wll.addImage('WLL_CONT', img[1]);
+// }
 
-    this.display = function(){
-      sl = createSprite(box1.position.x, box1.position.y);
-      sl.shapeColor = color(0);
-      sl.addImage('SL_CONT', img[2]);
-    }
-
-    this.movement = function(){
-      //sl.draw = function() { translate(box1.position.x, box1.position.y) }
-    }
-}
+//   function SeaLion() {
+//     this.x = 200;
+//     this.y = 500;
+//
+//     this.display = function(){
+//       sl = createSprite(boxs1.position.x, box1.position.y);
+//       sl.shapeColor = color(0);
+//       sl.addImage('SL_CONT', img[2]);
+//       rect(this.x, this.y, 30, 30);
+//     }
+//
+//     this.movement = function(){
+//       //sl.draw = function() { translate(box1.position.x, box1.position.y) }
+//     }
+// }
