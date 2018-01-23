@@ -5,7 +5,8 @@ function Lion(x, y, w, h) {
   //console.log(this.x);
 
   var options = {
-
+    friction: 0.3,
+    restitution: 0.6
   }
   this.body = Bodies.rectangle(x, y, w, h, options);
   this.w = w;

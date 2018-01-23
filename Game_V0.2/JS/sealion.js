@@ -18,24 +18,26 @@ function SeaLion(x, y, w, h){
     var pos = this.body.position;
     var angle = this.body.angle;
     //console.log(angle);
+    imageMode(CENTER);
+    rectMode(CENTER);
     push()
     translate(pos.x, pos.y);
     rotate(angle);
-    imageMode(CENTER);
-    rectMode(CENTER);
-    // sl = createSprite(0,0, this.w, this.h);
-    // sl.addImage("SL_BODY", img[5]);
-    // slw = createSprite(0,0, this.w * 2, this.h/2);
-    // slw.addImage("SLW_BODY", img[2]);
-    fill(0);
-    rect(0,0, this.w, this.h);
+
+    sl = createSprite(pos.x, pos.y, this.w, this.h);
+    sl.addImage("SL_BODY", img[5]);
+
+    // fill(0);
+    // rect(0,0, this.w, this.h);
     //console.log(sl);
     pop();
 
     push();
     translate(pos.x, pos.y);
-    fill(50);
-    rect(0,0, this.w *2, this.h);
+    //fill(50);
+    //rect(0,0, this.w *2, this.h);
+    slw = createSprite(pos.x, pos.y, this.w * 2, this.h/2);
+    slw.addImage("SLW_BODY", img[2]);
     pop();
 
     //pop();
