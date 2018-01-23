@@ -1,34 +1,45 @@
 function SeaLion(x, y, w, h){
-  this.w = 100;
-  this.h = this.w;
-  this.x = 300;
-  this.y = 2*(height /3);
-
   var options = {
-
+    friction: 0.3,
+    restitution: 0.6
   }
 
-  this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, options);
-  console.log(this.body)
-  //this.weapon = Bodies.rectangle(this.x, this.y, this.w * , this.h * 2, options);
+  this.w = w;
+  this.h = h;
+  this.x = x;
+  this.y = y;
+
+  this.body = Bodies.rectangle(x, y, w, h, options);
+
   World.add(engine.world, this.body);
-  this.pos = this.body.position;
-  this.angle = 0;
-
   //vSeaLion = Vector.create(this.x, this.y);
-
+  console.log(this.body);
   this.display = function() {
-    // rectMode(CENTER);
-    // fill(0);
-    // rect(this.pos.x , this.pos.y, this.w, this.h);
-    translate(this.pos.x, this.pos.y);
-
-    rotate(this.angle);
-    sl = createSprite(0,0, this.w, this.h);
-    sl.addImage("SL_BODY", img[2]);
+    var pos = this.body.position;
+    var angle = this.body.angle;
+    //console.log(angle);
+    push()
+    translate(pos.x, pos.y);
+    rotate(angle);
+    imageMode(CENTER);
+    rectMode(CENTER);
+    // sl = createSprite(0,0, this.w, this.h);
+    // sl.addImage("SL_BODY", img[5]);
+    // slw = createSprite(0,0, this.w * 2, this.h/2);
+    // slw.addImage("SLW_BODY", img[2]);
+    fill(0);
+    rect(0,0, this.w, this.h);
     //console.log(sl);
-    slw = createSprite(0,0, this.w * 2, this.h/2);
-    slw.addImage("SLW_BODY", img[4]);
+    pop();
+
+    push();
+    translate(pos.x, pos.y);
+    fill(50);
+    rect(0,0, this.w *2, this.h);
+    pop();
+
+    //pop();
+
 
 
   }
@@ -37,10 +48,6 @@ function SeaLion(x, y, w, h){
     //rotate(90);
     //translate(this.pos.x, this.pos.y);
 
-    push()
-    translate(this.pos.x, this.pos.y,)
-
-    pop()
   }
 
   this.controls = function(){
@@ -49,13 +56,15 @@ function SeaLion(x, y, w, h){
       this.body.position.x -= 1;
     }
     if(keyIsDown(RIGHT_ARROW)){
+      console.log("right arrow");
       this.body.position.x += 1;
     }
     if(keyIsDown(UP_ARROW)){
-      this.angle += 0.1;
+      this.body.angle += 0.1;
     }
     if(keyIsDown(DOWN_ARROW)){
-      this.angle -= .1;
+      this.body.angle -= .1;
     }
   }
+  pop();
 }

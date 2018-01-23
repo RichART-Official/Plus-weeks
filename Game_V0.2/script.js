@@ -9,7 +9,7 @@ var Engine = Matter.Engine,
 var engine = Engine.create();
 
 //Constructor function aliases
-var TheGround, TheWall, TheSeaLion, TheLion, TheBullet;
+var TheGround, TheWall, TheSeaLion, TheBullet;
 var TheLions = [];
 
 //Physics-Bodies
@@ -29,6 +29,7 @@ function preload(){
   img[2] = loadImage("img/Sea_Lion/SL0001.png");
   img[3] = loadImage("img/Lion/L0001.png");
   img[4] = loadImage("img/Sea_Lion_weapon/SLW0001.png");
+  img[5] = loadImage("img/Sea_Lion/SL0002.png");
 }
 
 function setup() {
@@ -37,12 +38,10 @@ function setup() {
 
   //Declare constructor functions
   TheGround = new Ground();
-  TheSeaLion = new SeaLion();
-  TheLion = new Lion();
-  for(i = 0; i <=10; i++){
-    var Random = 640;
-    Random =+ 100;
-    TheLions.push( new Lion(Random, 0, 0, 0));
+
+  TheSeaLion = new SeaLion(width/6, 100, 100, 100);
+  for(i = 0; i <=4; i++){
+    TheLions.push( new Lion(random((width/3)*1.2, width), 100, 100, 100));
   }
   //TheBullet = new Bullet();
   TheWall = new Wall();
@@ -60,26 +59,21 @@ function draw() {
   background(250);
 
   //ASSETS
+  TheSeaLion.display(width /4, 50, 100, 100);
+  TheSeaLion.weapon();
+  TheSeaLion.controls();
+
   TheGround.display();
   TheWall.display();
-  TheSeaLion.display();
-  TheSeaLion.weapon();
-  for (i=0; i <= TheLions.length; i++){
-    TheLion.display();
+  for (i=0; i < TheLions.length; i++){
+    TheLions[i].display();
   }
 
-  TheSeaLion.controls();
+
+
+
   //backdrop();
   //wall();
-
-  //INTERACTION
-
-  // //DEBUGGING
-  // The.debug = mouseIsPressed;
-  // bg.debug = mouseIsPressed;
-
-
-  //DRAW ALL SPRITES
   drawSprites();
 }
 

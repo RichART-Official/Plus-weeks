@@ -1,30 +1,43 @@
-console.log("lion working!");
+//.log("lion working!");
 
 function Lion(x, y, w, h) {
-  this.w = 20;
-  this.h = this.w;
-  this.x = x;
-  this.y = height;
-  console.log(this.x);
+  push()
+  //console.log(this.x);
 
   var options = {
 
   }
+  this.body = Bodies.rectangle(x, y, w, h, options);
+  this.w = w;
+  this.h = h;
 
-  this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, options);
   World.add(engine.world, this.body);
-  console.log(lion);
-  this.pos = this.body.position;
+
 
   //vSeaLion = Vector.create(this.x, this.y);
-  li = createSprite(this.pos.x, this.pos.y, this.w, this.h);
+
   this.display = function() {
+    var pos = this.body.position;
+    var angle = this.body.angle;
+
+    push();
+    translate(pos.x, pos.y);
+    rotate(angle);
+    rectMode(CENTER);
+    strokeWeight(1);
+    stroke(255);
+    fill(127);
+    rect(0, 0, this.w, this.h);
+
+    pop();
+    //li = createSprite(this.pos.x, this.pos.y, this.w, this.h);
+
     // rectMode(CENTER);
     // fill(0);
     // rect(this.pos.x , this.pos.y, this.w, this.h);
     //draw();
 
-    li.addImage("L_BODY", img[3]);
+    //li.addImage("L_BODY", img[3]);
   }
 
 }
