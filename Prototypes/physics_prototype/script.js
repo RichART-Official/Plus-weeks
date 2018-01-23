@@ -36,7 +36,19 @@ function setup() {
 // }
 
 function mousePressed() {
+  var Ypos = mouseY;
   boxes.push(new Box(mouseX, mouseY, random(10, 40), random(10, 40)));
+  Body.translate(boxes[boxes.length - 1], {
+    x: 5,
+    y: 5
+  })
+  //Body.setAngularVelocity(boxes[boxes.length - 1].body, 2)
+  //Body.update(boxes[boxes.length - 1], 10, 100, 1)
+  Body.applyForce(boxes[boxes.length - 1].body, {
+    x: 100,
+    y: 300
+  }, 0.0)
+
 }
 
 function draw() {
@@ -90,8 +102,7 @@ function Box(x, y, w, h) {
     this.controls = function(){
 
       if(keyIsDown(ENTER)){
-        var b = boxes.length;
-        Body.setAngularVelocity(boxes[b].body, 2)
+
       }
       if(keyIsDown(UP_ARROW)){
         angle += 5;

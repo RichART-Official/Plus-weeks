@@ -1,7 +1,7 @@
 function SeaLion(x, y, w, h){
   var options = {
-    friction: 0.3,
-    restitution: 0.6
+    friction: 1,
+    restitution: 0.0
   }
 
   this.w = w;
@@ -62,7 +62,9 @@ function SeaLion(x, y, w, h){
       this.body.position.x += 1;
     }
     if(keyIsDown(UP_ARROW)){
-      this.body.angle += 0.1;
+
+      this.body.position.y -= 10;
+      //this.body.angle += 0.1;
     }
     if(keyIsDown(DOWN_ARROW)){
       this.body.angle -= .1;
