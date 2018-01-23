@@ -11,6 +11,7 @@ var engine = Engine.create();
 //Constructor function aliases
 var TheGround, TheWall, TheSeaLion, TheBullet;
 var TheLions = [];
+var TheFish = [];
 
 //Physics-Bodies
 var ground, seaLion, wall, lion, bullet;
@@ -18,7 +19,7 @@ var ground, seaLion, wall, lion, bullet;
 //Physics-Vectors
 //var vSeaLion;
 //Sprites
-var wll, bg, sl, slw, li;
+var wll, bg, sl, slw, li, fi;
 
 //Assets
 var img = [];
@@ -68,10 +69,6 @@ function draw() {
   for (i=0; i < TheLions.length; i++){
     TheLions[i].display();
   }
-
-
-
-
   //backdrop();
   //wall();
   drawSprites();

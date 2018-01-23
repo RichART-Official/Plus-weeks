@@ -46,9 +46,7 @@ function SeaLion(x, y, w, h){
 
   }
 
-  this.weapon = function(){
-    //rotate(90);
-    //translate(this.pos.x, this.pos.y);
+  this.bullet = function(){
 
   }
 
