@@ -9,7 +9,7 @@ function backdrop(){
 }
 
 function Ground(){
-  this.w = width;
+  this.w = width * 2;
   this.h = 60;
   this.x = width /2;
   this.y = height;

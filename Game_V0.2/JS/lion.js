@@ -17,12 +17,13 @@ function Lion(x, y, w, h) {
   this.pos = this.body.position;
 
   //vSeaLion = Vector.create(this.x, this.y);
-
+  li = createSprite(this.pos.x, this.pos.y, this.w, this.h);
   this.display = function() {
     // rectMode(CENTER);
     // fill(0);
     // rect(this.pos.x , this.pos.y, this.w, this.h);
-    li = createSprite(this.pos.x, this.pos.y, this.w, this.h);
+    //draw();
+
     li.addImage("L_BODY", img[3]);
   }
 

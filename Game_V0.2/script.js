@@ -18,7 +18,7 @@ var ground, seaLion, wall, lion, bullet;
 //Physics-Vectors
 //var vSeaLion;
 //Sprites
-var wll, bg, sl, li;
+var wll, bg, sl, slw, li;
 
 //Assets
 var img = [];
@@ -28,17 +28,17 @@ function preload(){
   img[1] = loadImage("img/wll.jpeg");
   img[2] = loadImage("img/Sea_Lion/SL0001.png");
   img[3] = loadImage("img/Lion/L0001.png");
+  img[4] = loadImage("img/Sea_Lion_weapon/SLW0001.png");
 }
 
 function setup() {
 
-  createCanvas(1920 , 1080);
+  createCanvas(1920 , 1200);
 
   //Declare constructor functions
   TheGround = new Ground();
   TheSeaLion = new SeaLion();
   TheLion = new Lion();
-
   for(i = 0; i <=10; i++){
     var Random = 640;
     Random =+ 100;
@@ -52,6 +52,7 @@ function setup() {
   //Vector.add(vSeaLion);
   // run the engine
   Engine.run(engine);
+
 }
 
 function draw() {
@@ -62,9 +63,12 @@ function draw() {
   TheGround.display();
   TheWall.display();
   TheSeaLion.display();
+  TheSeaLion.weapon();
   for (i=0; i <= TheLions.length; i++){
     TheLion.display();
   }
+
+  TheSeaLion.controls();
   //backdrop();
   //wall();
 
