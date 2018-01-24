@@ -9,7 +9,7 @@ var Engine = Matter.Engine,
 var engine = Engine.create();
 
 //Constructor function aliases
-var TheGround, TheWall, TheSeaLion, TheBullet;
+var TheGround, TheWall, TheSeaLion, TheBullet, TheTimer;
 var TheLions = [];
 var TheFish = [];
 
@@ -19,7 +19,8 @@ var ground, seaLion, wall, lion, bullet;
 //Physics-Vectors
 //var vSeaLion;
 //Sprites
-var wll, bg, sl, slw, li, fi;
+//var wll, bg, sl, slw, li, fi;
+var wll, bg, sl, slw, fi;
 
 //Assets
 var img = [];
@@ -39,18 +40,24 @@ function setup() {
 
   //Declare constructor functions
   TheGround = new Ground();
-
+  TheTimer = new Timer();
   TheSeaLion = new SeaLion(width/6, 100, 100, 100);
+
+
   for(i = 0; i <=4; i++){
-    TheLions.push( new Lion(random((width/3)*1.2, width), 100, 100, 100));
+TheLions.push( new Lion(random((width/3)*1.2, width), 300, 100, 100));
   }
   //TheBullet = new Bullet();
   TheWall = new Wall();
-
+  for (i=0; i < TheLions.length; i++){
+    TheLions[i].create();
+  }
+  TheSeaLion.create();
   //Create world and engine
   // Add all of the bodies to the world
   //Vector.add(vSeaLion);
   // run the engine
+
   Engine.run(engine);
 
 }
@@ -61,17 +68,25 @@ function draw() {
 
   //ASSETS
   TheSeaLion.display(width /4, 50, 100, 100);
-  TheSeaLion.weapon();
+  //TheSeaLion.weapon();
   TheSeaLion.controls();
 
   TheGround.display();
   TheWall.display();
+  TheTimer.display();
+  console.log(TheLions.length);
   for (i=0; i < TheLions.length; i++){
     TheLions[i].display();
+  /*  li.position = {
+      x: TheLions[i].body.position.x,
+      y: TheLions[i].body.position.y
+    }*/
   }
   //backdrop();
   //wall();
+
   drawSprites();
+
 }
 
 

@@ -1,5 +1,3 @@
-console.log("environment working!");
-
 function backdrop(){
   var x = width /2;
   var y = height /2;
@@ -10,11 +8,15 @@ function backdrop(){
 
 function Ground(){
   this.w = width * 2;
-  this.h = 60;
+  this.h = 100;
   this.x = width /2;
   this.y = height;
-
-  this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, { isStatic: true });
+  this.options = {
+    isStatic: true,
+    friction: 1,
+    restitution: 1
+  }
+  this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, this.options);
   World.add(engine.world, this.body);
   this.pos = this.body.position;
 

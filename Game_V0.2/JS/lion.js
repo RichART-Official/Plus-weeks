@@ -14,22 +14,32 @@ function Lion(x, y, w, h) {
 
   World.add(engine.world, this.body);
 
-
+  var li;
   //vSeaLion = Vector.create(this.x, this.y);
+  this.create = function(){
+    this.li = createSprite(x, y, this.w, this.h);
+    this.li.addImage("LI_BODY", img[3]);
 
+  }
   this.display = function() {
     var pos = this.body.position;
     var angle = this.body.angle;
 
     push();
-    translate(pos.x, pos.y);
+    //translate(pos.x, pos.y);
     rotate(angle);
     rectMode(CENTER);
-    strokeWeight(1);
-    stroke(255);
-    fill(127);
-    rect(0, 0, this.w, this.h);
-
+    // strokeWeight(1);
+    // stroke(255);
+    // fill(127);
+    // rect(0, 0, this.w, this.h);
+//    li.addImage("LI_BODY", img[3]);
+    this.li.position = {
+//      x: TheLions[i].body.position.x,
+//      y: TheLions[i].body.position.y
+      x: this.body.position.x,
+      y: this.body.position.y
+    }
     pop();
     //li = createSprite(this.pos.x, this.pos.y, this.w, this.h);
 
