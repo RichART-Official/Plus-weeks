@@ -16,6 +16,7 @@ function Ground(){
     friction: 1,
     restitution: 1
   }
+
   this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, this.options);
   World.add(engine.world, this.body);
   this.pos = this.body.position;
@@ -30,7 +31,7 @@ function Ground(){
 function Wall(){
 
   this.w = 150;
-  this.h = 1.75*(height / 3);
+  this.h = 1.25*(height / 3);
   this.x = width / 3;
   this.y = height - (this.h /2);
 

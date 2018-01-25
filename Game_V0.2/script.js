@@ -45,7 +45,7 @@ function setup() {
 
 
   for(i = 0; i <=4; i++){
-TheLions.push( new Lion(random((width/3)*1.2, width), 300, 100, 100));
+    TheLions.push( new Lion(random((width/2.5)*1.2, width), 300, 100, 100));
   }
   //TheBullet = new Bullet();
   TheWall = new Wall();
@@ -74,7 +74,7 @@ function draw() {
   TheGround.display();
   TheWall.display();
   TheTimer.display();
-  console.log(TheLions.length);
+  //console.log(TheLions.length);
   for (i=0; i < TheLions.length; i++){
     TheLions[i].display();
   /*  li.position = {
