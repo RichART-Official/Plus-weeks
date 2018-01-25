@@ -9,9 +9,9 @@ function SeaLion(x, y, w, h){
   this.x = x;
   this.y = y;
   this.angle = 0;
-  this.imgScale = 0.15;
+  this.imgScale = 0.25;
 
-  this.body = Bodies.rectangle(x, y, w, h, options);
+  this.body = Bodies.circle(x, y, w, options);
 
   World.add(engine.world, this.body);
   //console.log(this.body);
@@ -28,7 +28,7 @@ function SeaLion(x, y, w, h){
     imageMode(CENTER);
     rectMode(CENTER);
     push();
-    slw.addImage("SLW_BODY", img[2]);
+    slw.addImage("SLW_BODY", img[3]);
     slw.position = {
       x: TheSeaLion.body.position.x,
       y: TheSeaLion.body.position.y
@@ -37,7 +37,7 @@ function SeaLion(x, y, w, h){
     pop();
     push()
 
-    sl.addImage("SL_BODY", img[5]);
+    sl.addImage("SL_BODY", img[4]);
     sl.position = {
       x: TheSeaLion.body.position.x,
       y: TheSeaLion.body.position.y

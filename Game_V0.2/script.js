@@ -23,27 +23,29 @@ var wll, bg, sl, slw, bl;
 
 //Assets
 var img = [];
+var walkcycles = [];
 
 function preload(){
-  img[0] = loadImage("img/bg.jpg");
-  img[1] = loadImage("img/wll.jpeg");
-  img[2] = loadImage("img/Sea_Lion/SL0001.png");
-  img[3] = loadImage("img/Lion/L0001.png");
-  img[4] = loadImage("img/Sea_Lion_weapon/SLW0001.png");
-  img[5] = loadImage("img/Sea_Lion/SL0002.png");
-  img[6] = loadImage("img/Bullet/B0001.png");
+  img[0] = loadImage("img/bg.png");
+  img[1] = loadImage("img/wll.png");
+  img[2] = loadImage("img/Lion/test00000.png");
+  img[3] = loadImage("img/Sea_Lion/SL0001.png");
+  img[4] = loadImage("img/Sea_Lion/SL0002.png");
+  img[5] = loadImage("img/Bullet/B0001.png");
+  walkcycles[0] = loadAnimation('img/Lion/test00000.png', 'img/Lion/test00027.png');
+
 }
 
 function setup() {
 
-  createCanvas(1920 , 1200);
+  createCanvas((windowHeight/9)*16 , windowHeight );
   //Declare constructor functions
   TheGround = new Ground();
   TheTimer = new Timer();
   TheSeaLion = new SeaLion(width/6, 100, 100, 100);
 
   for(i = 0; i <=4; i++){
-    TheLions.push( new Lion(random((width/2.5)*1.2, width), 300, 100, 100));
+    TheLions.push( new Lion(random((width/2.5)*1.2, width), height/2, 100, 100));
   }
   TheWall = new Wall();
   for (i=0; i < TheLions.length; i++){
@@ -63,7 +65,7 @@ function draw() {
   TheSeaLion.controls();
 
   TheGround.display();
-  TheWall.display();
+  
   TheTimer.display();
 
   for (i=0; i < TheBullets.length; i++){
@@ -75,6 +77,7 @@ function draw() {
   for (i=0; i < TheLions.length; i++){
     TheLions[i].display();
   }
+  TheWall.display();
   drawSprites();
 }
 

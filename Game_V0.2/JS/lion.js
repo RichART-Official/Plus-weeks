@@ -18,7 +18,8 @@ function Lion(x, y, w, h) {
   //vSeaLion = Vector.create(this.x, this.y);
   this.create = function(){
     this.li = createSprite(x, y, this.w, this.h);
-    this.li.addImage("LI_BODY", img[3]);
+    this.li.addAnimation("LI_BODY", walkcycles[0]);
+    this.li.scale = 0.5;
   }
   this.display = function() {
     var pos = this.body.position;

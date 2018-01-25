@@ -16,7 +16,7 @@ function Bullet(x, y, w, h, a){
 
   this.create = function(){
       this.bl = createSprite(this.x, this.y, this.w, this.h);
-      this.bl.addImage("LI_BODY", img[6]);
+      this.bl.addImage("LI_BODY", img[5]);
       this.bl.scale = .35
       this.bl.rotation = this.a;
   }
