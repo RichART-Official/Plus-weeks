@@ -9,6 +9,7 @@ function SeaLion(x, y, w, h){
   this.x = x;
   this.y = y;
   this.angle = 0;
+  this.imgScale = 0.15;
 
   this.body = Bodies.rectangle(x, y, w, h, options);
 
@@ -18,6 +19,8 @@ function SeaLion(x, y, w, h){
     var pos = this.body.position;
     slw = createSprite(pos.x, pos.y, this.w * 2, this.h/2);
     sl = createSprite(pos.x, pos.y, this.w, this.h);
+    sl.scale = this.imgScale;
+    slw.scale = this.imgScale;
   }
   this.display = function() {
     var pos = this.body.position;
@@ -77,5 +80,5 @@ function SeaLion(x, y, w, h){
       //console.log(this.angle);
     }
   }
-  pop();
+
 }

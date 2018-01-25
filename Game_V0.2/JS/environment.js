@@ -23,7 +23,9 @@ function Ground(){
 
   this.display = function(){
     rectMode(CENTER);
-    fill(0);
+    noFill();
+    noStroke();
+    
     rect(this.pos.x , this.pos.y, this.w, this.h);
   }
 }
@@ -45,5 +47,6 @@ function Wall(){
     rectMode(CENTER);
     fill(0);
     rect(this.pos.x , this.pos.y, this.w, this.h);
+    //image(img[1], this.pos.x , this.pos.y)
   }
 }

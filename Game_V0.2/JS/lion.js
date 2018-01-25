@@ -19,7 +19,6 @@ function Lion(x, y, w, h) {
   this.create = function(){
     this.li = createSprite(x, y, this.w, this.h);
     this.li.addImage("LI_BODY", img[3]);
-
   }
   this.display = function() {
     var pos = this.body.position;
