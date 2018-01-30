@@ -1,3 +1,7 @@
+//STATUS
+//0 = start screen, 1 = active, 2 = won, 3 = dead
+var status;
+
 // module aliases
 var Engine = Matter.Engine,
     //Render = Matter.Render,
@@ -16,14 +20,17 @@ var TheBullets = [];
 //Physics-Bodies
 var ground, seaLion, wall, lion, bullet;
 
-//Physics-Vectors
-//var vSeaLion;
 //Sprites
 var wll, bg, sl, slw, bl;
+
+//Sprite groups
+//NOTE: can we make the Sprite groups & constructor function arrays into one?
+var ammo, targets, screens;
 
 //Assets
 var img = [];
 var walkcycles = [];
+
 
 function preload(){
   img[0] = loadImage("img/bg.png");
@@ -32,44 +39,67 @@ function preload(){
   img[3] = loadImage("img/Sea_Lion/SL0001.png");
   img[4] = loadImage("img/Sea_Lion/SL0002.png");
   img[5] = loadImage("img/Bullet/B0001.png");
+  img[6] = loadImage('img/Start_Screen/start_screen.png')
   walkcycles[0] = loadAnimation('img/Lion/test00000.png', 'img/Lion/test00027.png');
-
 }
 
 function setup() {
-
+  //Create canvas
   createCanvas((windowHeight/9)*16 , windowHeight );
+
+  //Create Spirte groups
+  ammo = new Group();
+  targets = new Group();
+  screens = new Group();
+
   //Declare constructor functions
   TheGround = new Ground();
   TheTimer = new Timer();
   TheSeaLion = new SeaLion(width/6, 100, 100, 100);
-
   for(i = 0; i <=4; i++){
     TheLions.push( new Lion(random((width/2.5)*1.2, width), height/2, 100, 100));
   }
-  TheWall = new Wall();
   for (i=0; i < TheLions.length; i++){
     TheLions[i].create();
   }
+  TheWall = new Wall();
   TheSeaLion.create();
-  Engine.run(engine);
 
+  //Run Physics engine
+  Engine.run(engine);
+  
 }
 
+// function windowResized() {
+//   resizeCanvas((windowHeight/9)*16 , windowHeight);
+// }
+
 function draw() {
+  background(255, 0,0);
+  if(init() === "play"){
+    start();
+  }
+}
+
+function keyPressed(){
+  if (keyCode === 32){
+  fire();
+  for (i=0; i < TheBullets.length; i++){
+    TheBullets[i].create();
+  }
+  }
+}
+
+function start(){
   //BACKGROUND
   background(img[0]);
   //ASSETS
   TheSeaLion.display(width /4, 50, 100, 100);
-  //TheSeaLion.weapon();
   TheSeaLion.controls();
-
   TheGround.display();
-  
   TheTimer.display();
 
   for (i=0; i < TheBullets.length; i++){
-    TheBullets[i].create();
     TheBullets[i].display();
   }
 
@@ -78,11 +108,7 @@ function draw() {
     TheLions[i].display();
   }
   TheWall.display();
-  drawSprites();
-}
 
-function keyPressed(){
-  if (keyCode === 32){
-    TheBullets.push(new Bullet(TheSeaLion.body.position.x, TheSeaLion.body.position.y, 75, 40, TheSeaLion.angle))
-  }
+  drawSprites();
+
 }

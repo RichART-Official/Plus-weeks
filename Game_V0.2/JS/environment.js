@@ -22,25 +22,23 @@ function Ground(){
   this.pos = this.body.position;
 
   this.display = function(){
-    ;
-    fill(255, 0,0);
+    fill(110, 83,45);
     noStroke();
-    
     rect(this.pos.x , this.pos.y, this.w, this.h);
   }
 }
 
 function Wall(){
 
-  this.w = 100;
-  this.h = 1.25*(height / 3);
-  this.x = width / 2.35;
+  this.w = 110;
+  this.h = 1*(height / 3);
+  this.x = width / 2.33;
   this.y = height - (this.h /2);
 
 
   this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, { isStatic: true });
   World.add(engine.world, this.body);
-  
+
   wll = createSprite(this.x, this.y, this.w, this.h);
 
   this.pos = this.body.position;
@@ -49,6 +47,7 @@ function Wall(){
     rectMode(CENTER);
     //fill(0);
     //rect(this.pos.x , this.pos.y, this.w, this.h);
+    imageMode(CENTER);
     wll.addImage("WLL_BODY", img[1]);
     wll.scale = 0.6;
   }
