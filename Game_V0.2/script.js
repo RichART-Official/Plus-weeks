@@ -40,6 +40,7 @@ function preload(){
   img[4] = loadImage("img/Sea_Lion/SL0002.png");
   img[5] = loadImage("img/Bullet/B0001.png");
   img[6] = loadImage('img/Start_Screen/start_screen.png')
+  //walkcycles[0] = loadAnimation('img/Lion/Untitled00000.png', 'img/Lion/Untitled00009.png');
   walkcycles[0] = loadAnimation('img/Lion/test00000.png', 'img/Lion/test00027.png');
 }
 
@@ -76,9 +77,10 @@ function setup() {
 
 function draw() {
   background(255, 0,0);
-  if(init() === "play"){
-    start();
-  }
+  // if(init() === "play"){
+  //   start();
+  // }
+  start();
 }
 
 function keyPressed(){

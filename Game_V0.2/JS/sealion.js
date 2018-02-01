@@ -27,6 +27,14 @@ function SeaLion(x, y, w, h){
     //console.log(angle);
     imageMode(CENTER);
     rectMode(CENTER);
+    push()
+
+    sl.addImage("SL_BODY", img[4]);
+    sl.position = {
+      x: TheSeaLion.body.position.x -25,
+      y: TheSeaLion.body.position.y +75
+    }
+    pop()
     push();
     slw.addImage("SLW_BODY", img[3]);
     slw.position = {
@@ -35,14 +43,7 @@ function SeaLion(x, y, w, h){
     }
     slw.rotation = this.angle;
     pop();
-    push()
-
-    sl.addImage("SL_BODY", img[4]);
-    sl.position = {
-      x: TheSeaLion.body.position.x,
-      y: TheSeaLion.body.position.y
-    }
-    pop();
+    
   }
   this.bullet = function(){
 
