@@ -56,8 +56,12 @@ function SeaLion(x, y, w, h){
   }
   this.controls = function(){
     if(keyIsDown(LEFT_ARROW)){
+      if(TheSeaLion.body.position.x <= 0) {
+        this.body.position.x += .5;
+      } else {
+        this.body.position.x -= .5;
+      }
 
-      this.body.position.x -= .5;
     }
     if(keyIsDown(RIGHT_ARROW)){
       this.body.position.x += .5;

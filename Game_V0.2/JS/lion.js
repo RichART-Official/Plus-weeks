@@ -13,7 +13,10 @@ function Lion(x, y, w, h) {
   var li;
   this.create = function(){
     this.li = createSprite(x, y, this.w, this.h);
+    push();
+    frameRate(24);
     this.li.addAnimation("LI_BODY", walkcycles[0]);
+    pop();
     this.li.scale = 0.5;
     //Add new lion to sprite groups
     targets.add(this.li);

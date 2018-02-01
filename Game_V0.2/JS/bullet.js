@@ -1,11 +1,14 @@
 //console.log("bullet.js working!")
 
-function Bullet(x, y, w, h, a){
+function Bullet(x, y, w, h, a, ){
   this.x = x;
   this.y = y;
   this.w = w;
   this.h = h;
   this.a = a;
+  // this.totalDist = .5;
+
+
 
   var options = {
     //options
@@ -16,9 +19,16 @@ function Bullet(x, y, w, h, a){
     x: this.body.position.x,
     y: this.body.position.y
   })
+
+  // Calculate forceX and forceY automaticially based on shooting angle.
+  // For now static values are entered.
+  // this.vY = this.totalDist * sin(this.a);
+  // this.vX = sqrt(sq(-1 * this.body.force.y)-sq(this.totalDist));
+
   this.body.force = {
-    x: .015,
-    y: -.03
+    x: 0.05,
+    y: -0.03
+    // x: sqrt(sq(this.body.force.y)-sq(this.totalDist))
   }
   this.body.angle =  this.a;
   this.pos = this.body.position;
@@ -40,6 +50,8 @@ function Bullet(x, y, w, h, a){
     }
     pop();
   }
+
+  this.hit
 }
 
 function fire(){

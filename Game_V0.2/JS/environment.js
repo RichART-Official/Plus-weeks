@@ -22,8 +22,8 @@ function Ground(){
   this.pos = this.body.position;
 
   this.display = function(){
-    fill(110, 83,45);
-    noStroke();
+    fill(126, 105,149);
+
     rect(this.pos.x , this.pos.y, this.w, this.h);
   }
 }
@@ -50,5 +50,6 @@ function Wall(){
     imageMode(CENTER);
     wll.addImage("WLL_BODY", img[1]);
     wll.scale = 0.6;
+    wll.immovable = true;
   }
 }

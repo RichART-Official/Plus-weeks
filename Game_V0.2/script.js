@@ -76,7 +76,9 @@ function setup() {
 // }
 
 function draw() {
-  frameRate(30);
+  var fps = 30;
+
+  frameRate(fps);
   background(255, 0,0);
   // if(init() === "play"){
   //   start();
