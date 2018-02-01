@@ -17,8 +17,9 @@ function SeaLion(x, y, w, h){
   //console.log(this.body);
   this.create = function(){
     var pos = this.body.position;
-    slw = createSprite(pos.x, pos.y, this.w * 2, this.h/2);
+
     sl = createSprite(pos.x, pos.y, this.w, this.h);
+    slw = createSprite(pos.x, pos.y, this.w * 2, this.h/2);
     sl.scale = this.imgScale;
     slw.scale = this.imgScale;
   }
@@ -43,7 +44,7 @@ function SeaLion(x, y, w, h){
     }
     slw.rotation = this.angle;
     pop();
-    
+
   }
   this.bullet = function(){
 

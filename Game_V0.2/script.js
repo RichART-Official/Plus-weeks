@@ -35,19 +35,19 @@ var walkcycles = [];
 function preload(){
   img[0] = loadImage("img/bg.png");
   img[1] = loadImage("img/wll.png");
-  img[2] = loadImage("img/Lion/test00000.png");
+  //img[2] = loadImage("img/Lion/test00000.png");
   img[3] = loadImage("img/Sea_Lion/SL0001.png");
   img[4] = loadImage("img/Sea_Lion/SL0002.png");
   img[5] = loadImage("img/Bullet/B0001.png");
   img[6] = loadImage('img/Start_Screen/start_screen.png')
   //walkcycles[0] = loadAnimation('img/Lion/Untitled00000.png', 'img/Lion/Untitled00009.png');
-  walkcycles[0] = loadAnimation('img/Lion/test00000.png', 'img/Lion/test00027.png');
+  walkcycles[0] = loadAnimation('img/Lion/lionwalkin00000.png', 'img/Lion/lionwalkin00009.png');
 }
 
 function setup() {
   //Create canvas
-  createCanvas((windowHeight/9)*16 , windowHeight );
-
+  // createCanvas((windowHeight/9)*16 , windowHeight );
+  createCanvas(1920 , 1080 );
   //Create Spirte groups
   ammo = new Group();
   targets = new Group();
@@ -68,7 +68,7 @@ function setup() {
 
   //Run Physics engine
   Engine.run(engine);
-  
+
 }
 
 // function windowResized() {
@@ -76,6 +76,7 @@ function setup() {
 // }
 
 function draw() {
+  frameRate(30);
   background(255, 0,0);
   // if(init() === "play"){
   //   start();
